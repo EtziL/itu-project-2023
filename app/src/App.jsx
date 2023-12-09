@@ -10,7 +10,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<h1 className="text-3xl uppercase text-center">Classic games</h1>} />
                 <Route path="/solitaire" element={<Solitaire/>} />
-                <Route path="/minesweeper/game/:height/:width" element={<Minesweeper />} />
+                <Route path="/minesweeper" element={<MineMenu />} />
+                <Route path="/minesweeper/game/:height/:width/:mines" element={<Minesweeper />} />
             </Routes>
         </div>
     );
