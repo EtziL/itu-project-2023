@@ -1,8 +1,12 @@
-import express from 'express';
-import {solitaireRouter} from './solitaire.js'
-const app = express()
-const port = 3000
+import express from "express";
+import { solitaireRouter } from "./solitaire.js";
+import { minesweeperRouter } from "./minesweeper.js";
+import cors from "cors";
+const app = express();
+app.use(cors());
+const port = 3000;
 
-app.use('/solitaire', solitaireRouter);
+app.use("/solitaire", solitaireRouter);
+app.use("/minesweeper", minesweeperRouter);
 
 app.listen(port);
