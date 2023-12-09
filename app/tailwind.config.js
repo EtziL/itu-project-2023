@@ -3,7 +3,8 @@ export default {
     theme: {
         extend: {
             colors: {
-                'solitaireBg': '#0b421a',
+                solitaireBg: "#0b421a",
+                minesweeperTileBg: "#dcdcdc",
             },
         },
     },
