@@ -17,7 +17,7 @@ export const SuitHouse = ({ accept, lastDropped, onDrop }) => {
     return (
         <div>
             <div ref={drop} className={'w-fit p-1 ' + (isActive ? 'bg-green-400' : 'bg-solitaireBg')}>
-                <Card value={lastDropped ? lastDropped.value : ""} type={accept} />
+                <Card value={lastDropped ? lastDropped.value : ""} type={accept} draggable={false}/>
             </div>
         </div>
     )
