@@ -65,7 +65,12 @@ solitaireRouter.post('/drop-house', async (req, res) => {
     const state = await loadGame();
     const pile = state.housePiles.find(item => item['suit'] == suit)
 
-    if ((pile.lastDropped == null && card.value == 'A') || (cardValues[pile.lastDropped.value] + 1 == cardValues[card.value])) {
+    if (!pile.lastDropped && card.value != 'A') {
+        res.status(200).send(state);
+        return;
+    }
+
+    if ((!pile.lastDropped && card.value === 'A') ||(cardValues[pile.lastDropped.value] + 1 == cardValues[card.value])) {
         console.log('valid')
         const newDeck = removeFromDeck(state.deck, card);
         const newWaste = removeFromDeck(state.waste, card);
