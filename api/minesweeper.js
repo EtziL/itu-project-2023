@@ -28,7 +28,7 @@ class Minesweeper {
     }
 
     async createBoard() {
-        //TODO: insert bombs, calculate around
+        //TODO: insert bombs, calculate around, Check MAX W, H, M | 30 24 504
         const board = [];
         for (let i = 0; i < this.height; i++) {
             const row = [];

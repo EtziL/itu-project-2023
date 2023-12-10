@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+    font-family: 'Digital-7';
+    src: url('../public/fonts/digital-7.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Tile from "../../components/xetzle00/Tile";
+import "../../components/xetzle00/InsetBorder.css";
 
 const Minesweeper = () => {
     const { height, width, mines } = useParams();
@@ -31,8 +32,16 @@ const Minesweeper = () => {
     };
 
     return (
-        <div className="bg-slate-800 min-h-screen py-5 flex justify-center items-center">
-            <div>{generateBoard()}</div>
+        <div className="bg-slate-800 min-h-screen py-5 flex flex-col justify-center items-center">
+            <div className="w-max max-w-7xl bg-minesweeperTileBg p-4 border-8 border-inset">
+                <div className="flex justify-between text-minesweeperDigitalRed mb-4 font-digital text-5xl font-bold bg-minesweeperTileBg p-2 border-8 border-inset-r w-full">
+                    <div className="bg-black px-px leading-none border-2">040</div>
+                    <div className="bg-black px-px leading-none border-2">999</div>
+                </div>
+                <div className="border-8 border-inset-r w-full">
+                    <div className="flex flex-col">{generateBoard()}</div>
+                </div>
+            </div>
         </div>
     );
 };
