@@ -8,7 +8,7 @@ import explosion from "../../assets/minesweeper/explosion.mp3";
 
 const Tile = ({ tile }) => {
     const [icon, setIcon] = useState(null);
-    const { setClicked } = useContext(MinesweeperContext);
+    const { setClicked, setTimerRunning, setFace } = useContext(MinesweeperContext);
     const [playSound] = useSound(explosion);
 
     const style = {
@@ -23,9 +23,12 @@ const Tile = ({ tile }) => {
             onClick={() => {
                 if (tile.isMine) {
                     setClicked(tile);
+                    setTimerRunning(false);
                     playSound();
+                    setFace("☠️");
                     console.log("BOOOOOOM");
                 } else {
+                    setFace("😮");
                     setClicked(tile);
                 }
             }}
@@ -34,9 +37,7 @@ const Tile = ({ tile }) => {
                 setClicked(tile);
             }}
         >
-            {/* {tile.isMine ? <img src={icon_bomb} alt="Minesweeper" /> : <TileAroundIcon value={tile.around} />} */}
             {tile.revealed && (tile.isMine ? <img src={icon_bomb} alt="Minesweeper" className="bg-minesweeperDigitalRed" /> : <TileAroundIcon value={tile.around} />)}
-            {/* <img src={icon_bomb} alt="Minesweeper" /> */}
         </div>
     );
 };

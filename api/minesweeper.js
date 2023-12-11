@@ -21,6 +21,7 @@ minesweeperRouter.get("/game/reveal/:x/:y", async (req, res) => {
     const { x, y } = req.params;
     const game = new Minesweeper();
     const result = await game.updateBoard(x, y);
+    await game.saveGame();
     res.send(result);
 });
 

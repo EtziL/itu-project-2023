@@ -8,7 +8,6 @@ const MineMenu = () => {
     const [menuVisible, setMenuVisible] = useState(false);
 
     const toggleMenu = () => {
-        console.log("show menu");
         setMenuVisible(!menuVisible);
     };
 
