@@ -1,19 +1,38 @@
-import React from "react";
+import { useContext, useEffect, useState } from "react";
 import "./InsetBorder.css";
-import { icon_1, icon_2, icon_3, icon_4, icon_5, icon_6, icon_7, icon_8, icon_flag, icon_bomb } from "../../assets/minesweeper";
+import { icon_flag, icon_bomb } from "../../assets/minesweeper";
+import TileAroundIcon from "./TileAroundIcon";
+import MinesweeperContext from "./MinesweeperContext";
 
-const Tile = ({ x, y }) => {
+const Tile = ({ tile }) => {
+    const [icon, setIcon] = useState(null);
+    const { setClicked } = useContext(MinesweeperContext);
+
+    const style = {
+        revealed: "bg-gray-400 border-2 border-solid border-gray-600 transition-all duration-500",
+        hidden: "bg-minesweeperTileBg border-4 border-inset hover:bg-gray-400 transition-all duration-500 cursor-pointer",
+    };
+
     return (
         <div
-            className="cursor-pointer flex justify-center items-center
-            bg-minesweeperTileBg border-4 border-inset hover:bg-gray-400 transition-all
-            h-12 w-12"
+            className={`h-12 w-12 flex justify-center items-center
+                ${tile.revealed ? style.revealed : style.hidden}`}
             onClick={() => {
-                console.log(`Clicked on ${x}, ${y}`);
+                if (tile.isMine) {
+                    setClicked(tile);
+                    console.log("BOOOOOOOM!");
+                } else {
+                    setClicked(tile);
+                }
+            }}
+            onContextMenu={(e) => {
+                e.preventDefault();
+                setClicked(tile);
             }}
         >
+            {/* {tile.isMine ? <img src={icon_bomb} alt="Minesweeper" /> : <TileAroundIcon value={tile.around} />} */}
+            {tile.revealed && (tile.isMine ? <img src={icon_bomb} alt="Minesweeper" /> : <TileAroundIcon value={tile.around} />)}
             {/* <img src={icon_bomb} alt="Minesweeper" /> */}
-            {/* {`${x}, ${y}`} */}
         </div>
     );
 };

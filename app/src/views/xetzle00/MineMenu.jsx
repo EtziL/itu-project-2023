@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { icon_bomb } from "../../assets/minesweeper";
 import { Link } from "react-router-dom";
-import DifficultyBtn from "../../components/xetzle00/DifficultyBtn";
+import { DifficultyBtn } from "../../components/xetzle00";
 import { AiOutlineClose } from "react-icons/ai";
 
 const MineMenu = () => {
