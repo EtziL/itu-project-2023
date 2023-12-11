@@ -3,10 +3,13 @@ import "./InsetBorder.css";
 import { icon_flag, icon_bomb } from "../../assets/minesweeper";
 import TileAroundIcon from "./TileAroundIcon";
 import MinesweeperContext from "./MinesweeperContext";
+import useSound from "use-sound";
+import explosion from "../../assets/minesweeper/explosion.mp3";
 
 const Tile = ({ tile }) => {
     const [icon, setIcon] = useState(null);
     const { setClicked } = useContext(MinesweeperContext);
+    const [playSound] = useSound(explosion);
 
     const style = {
         revealed: "bg-gray-400 border-2 border-solid border-gray-600 transition-all duration-500",
@@ -20,7 +23,8 @@ const Tile = ({ tile }) => {
             onClick={() => {
                 if (tile.isMine) {
                     setClicked(tile);
-                    console.log("BOOOOOOOM!");
+                    playSound();
+                    console.log("BOOOOOOM");
                 } else {
                     setClicked(tile);
                 }
@@ -31,7 +35,7 @@ const Tile = ({ tile }) => {
             }}
         >
             {/* {tile.isMine ? <img src={icon_bomb} alt="Minesweeper" /> : <TileAroundIcon value={tile.around} />} */}
-            {tile.revealed && (tile.isMine ? <img src={icon_bomb} alt="Minesweeper" /> : <TileAroundIcon value={tile.around} />)}
+            {tile.revealed && (tile.isMine ? <img src={icon_bomb} alt="Minesweeper" className="bg-minesweeperDigitalRed" /> : <TileAroundIcon value={tile.around} />)}
             {/* <img src={icon_bomb} alt="Minesweeper" /> */}
         </div>
     );

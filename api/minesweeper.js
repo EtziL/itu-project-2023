@@ -53,8 +53,17 @@ const recursiveReveal = async (board, x, y, visited) => {
     visited.push(tile);
 
     // If number -> reveal and ret
-    if (tile.around > 0 || tile.isMine) {
+    if (tile.around > 0 && !tile.isMine) {
         tile.revealed = true;
+        return;
+    }
+    if (tile.isMine) {
+        tile.revealed = true;
+        board.forEach((row) => {
+            row.forEach((tile) => {
+                tile.revealed = true;
+            });
+        });
         return;
     }
 
