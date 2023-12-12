@@ -5,12 +5,14 @@ import "../../components/xetzle00/InsetBorder.css";
 import { MinesweeperBoard, MinesweeperHeader, Tile } from "../../components/xetzle00";
 import MinesweeperContext from "../../components/xetzle00/MinesweeperContext";
 
+// TODO: Flagging | MineCnt (max mines - flagged) | Win (Fireworks, Face, Modal?) | Custom settings
+
 const Minesweeper = () => {
     const { height, width, mines } = useParams();
     const [board, setBoard] = useState([]);
     const [clicked, setClicked] = useState({});
     const [reset, setReset] = useState(false);
-    const [mineCnt, setMineCnt] = useState(mines); //TODO max mines - flagged
+    const [mineCnt, setMineCnt] = useState(mines);
     const [face, setFace] = useState("🙂");
     const [timer, setTimer] = useState(0);
     const [timerRunning, setTimerRunning] = useState(false);

@@ -12,7 +12,7 @@ const MineMenu = () => {
     };
 
     return (
-        <div className="bg-slate-800 w-full min-h-screen flex justify-center items-center flex-col">
+        <div className="bg-slate-800 w-full min-h-screen flex justify-center items-center flex-col font-silkScreen">
             <span className="flex justify-center items-center mb-20">
                 <img src={icon_bomb} className="w-12 h-12" />
                 <h1 className="text-5xl text-white font-bold uppercase leading-tight">Minesweeper</h1>
