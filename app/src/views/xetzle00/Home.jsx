@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { cursor } from "../../assets/minesweeper";
-import Particles from "../../components/xetzle00/Particles";
+import { Particles } from "../../components/xetzle00/";
 
 const Home = () => {
     return (
@@ -34,7 +34,6 @@ const Home = () => {
                     <Link to="/checkers">Checkers</Link>
                 </li>
             </ul>
-            {/* particles */}
             <div className="absolute bottom-0 left-0 w-full h-1/2 bg-transparent z-0 overflow-hidden opacity-50">
                 <Particles />
             </div>

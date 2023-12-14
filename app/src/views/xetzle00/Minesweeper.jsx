@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../../components/xetzle00/InsetBorder.css";
-import { MinesweeperBoard, MinesweeperHeader, Tile } from "../../components/xetzle00";
+import { MinesweeperBoard, MinesweeperHeader, Confetti } from "../../components/xetzle00";
 import MinesweeperContext from "../../components/xetzle00/MinesweeperContext";
-import Confetti from "../../components/xetzle00/Confetti";
 
 const Minesweeper = () => {
     const { height, width, mines } = useParams();
@@ -28,7 +27,6 @@ const Minesweeper = () => {
         const getBoard = async () => {
             const response = await axios.get(`http://localhost:3000/minesweeper/game/create/${height}/${width}/${mines}`);
             setBoard(response.data);
-            console.log(response.data);
         };
         getBoard();
     }, [reset]);
@@ -36,7 +34,6 @@ const Minesweeper = () => {
     // -- on Left Click | Reveal tile && First interaction | Start timer -- //
     // -- on Right Click | (un)Flag tile -- //
     useEffect(() => {
-        console.log(`Clicked on ${clicked.x}, ${clicked.y}`);
         if (timer === 0 && clicked.x != undefined) {
             setTimerRunning(true);
         }
@@ -62,7 +59,6 @@ const Minesweeper = () => {
 
     // -- Timer func + cleanup -- //
     useEffect(() => {
-        console.log(`Timer running: ${timerRunning}`);
         if (timerRunning && face !== "☠️") {
             const interval = setInterval(() => {
                 setTimer((timer) => timer + 1);
