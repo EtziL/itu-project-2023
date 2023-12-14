@@ -28,7 +28,7 @@ const TileAroundIcon = ({ value }) => {
         }
     };
 
-    return <>{value != 0 && <img src={getIconForValue(value)} alt="Number" />}</>;
+    return <>{value != 0 && <img src={getIconForValue(value)} alt="Number of around mines" />}</>;
 };
 
 export default TileAroundIcon;

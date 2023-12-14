@@ -20,7 +20,16 @@ minesweeperRouter.get("/game/create/:height/:width/:mines", async (req, res) => 
 minesweeperRouter.get("/game/reveal/:x/:y", async (req, res) => {
     const { x, y } = req.params;
     const game = new Minesweeper();
-    const result = await game.updateBoard(x, y);
+    const result = await game.revealTile(x, y);
+    await game.saveGame();
+    res.send(result);
+});
+
+// Flag the clicked tile
+minesweeperRouter.get("/game/flag/:x/:y", async (req, res) => {
+    const { x, y } = req.params;
+    const game = new Minesweeper();
+    const result = await game.flag(x, y);
     await game.saveGame();
     res.send(result);
 });
@@ -150,7 +159,7 @@ class Minesweeper {
         await this.saveGame();
     }
 
-    async updateBoard(x, y) {
+    async revealTile(x, y) {
         const board = await this.loadGame();
         await recursiveReveal(board, x, y, []);
         let win = true;
@@ -163,6 +172,21 @@ class Minesweeper {
         });
         await this.saveGame();
         return { board, win };
+    }
+
+    async flag(x, y) {
+        const board = await this.loadGame();
+        board[y][x].flagged = !board[y][x].flagged;
+        let flaggedCnt = 0;
+        board.forEach((row) => {
+            row.forEach((tile) => {
+                if (tile.flagged) {
+                    flaggedCnt++;
+                }
+            });
+        });
+        await this.saveGame();
+        return { board, flaggedCnt };
     }
 
     async saveGame() {

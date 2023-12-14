@@ -8,7 +8,7 @@ import explosion from "../../assets/minesweeper/explosion.mp3";
 
 const Tile = ({ tile }) => {
     const [icon, setIcon] = useState(null);
-    const { setClicked, setTimerRunning, face, setFace } = useContext(MinesweeperContext);
+    const { setClicked, setTimerRunning, face, setFace, setMouseBtn } = useContext(MinesweeperContext);
     const [playSound] = useSound(explosion);
 
     const style = {
@@ -21,6 +21,10 @@ const Tile = ({ tile }) => {
             className={`h-12 w-12 flex justify-center items-center
                 ${tile.revealed ? style.revealed : style.hidden}`}
             onClick={() => {
+                setMouseBtn("left");
+                if (tile.flagged) {
+                    return;
+                }
                 if (tile.isMine) {
                     setClicked(tile);
                     setTimerRunning(false);
@@ -37,10 +41,18 @@ const Tile = ({ tile }) => {
             }}
             onContextMenu={(e) => {
                 e.preventDefault();
+                if (tile.revealed) {
+                    return;
+                }
+                setMouseBtn("right");
                 setClicked(tile);
             }}
         >
-            {tile.revealed && (tile.isMine ? <img src={icon_bomb} alt="Minesweeper" className="bg-minesweeperDigitalRed" /> : <TileAroundIcon value={tile.around} />)}
+            {tile.revealed && !tile.isMine && !tile.flagged && <TileAroundIcon value={tile.around} />}
+            {tile.revealed && !tile.isMine && tile.flagged && <img src={icon_flag} alt="Wrong guessed mine" className="bg-red-400" />}
+            {tile.revealed && tile.isMine && !tile.flagged && <img src={icon_bomb} alt="Mine" className="bg-minesweeperDigitalRed" />}
+            {tile.revealed && tile.isMine && tile.flagged && <img src={icon_bomb} alt="Right guessed mine" className="bg-green-500" />}
+            {!tile.revealed && tile.flagged && <img src={icon_flag} alt="Flag icon" />}
         </div>
     );
 };

@@ -10,15 +10,27 @@ const Home = () => {
             </h1>
             <ul className="text-4xl text-white text-center mt-20 select-none z-10">
                 <li className="relative mb-4 border-b-4 pb-2 border-dashed border-transparent hover:border-white transition-all duration-300 group">
-                    <img src={cursor} className="absolute rotate-90 w-10 -left-14 top-1/2 transform -translate-y-1/2 invisible group-hover:visible" alt="Cursor" />
+                    <img
+                        src={cursor}
+                        className="absolute rotate-90 w-10 -left-14 top-1/2 transform -translate-y-1/2 invisible group-hover:visible"
+                        alt="Cursor pointer icon"
+                    />
                     <Link to="/minesweeper">Minesweeper</Link>
                 </li>
                 <li className="relative mb-4 border-b-4 pb-2 border-dashed border-transparent hover:border-white transition-all duration-300 group">
-                    <img src={cursor} className="absolute rotate-90 w-10 -left-14 top-1/2 transform -translate-y-1/2 invisible group-hover:visible" alt="Cursor" />
+                    <img
+                        src={cursor}
+                        className="absolute rotate-90 w-10 -left-14 top-1/2 transform -translate-y-1/2 invisible group-hover:visible"
+                        alt="Cursor pointer icon"
+                    />
                     <Link to="/solitaire">Solitaire</Link>
                 </li>
                 <li className="relative mb-4 border-b-4 pb-2 border-dashed border-transparent hover:border-white transition-all duration-300 group">
-                    <img src={cursor} className="absolute rotate-90 w-10 -left-14 top-1/2 transform -translate-y-1/2 invisible group-hover:visible" alt="Cursor" />
+                    <img
+                        src={cursor}
+                        className="absolute rotate-90 w-10 -left-14 top-1/2 transform -translate-y-1/2 invisible group-hover:visible"
+                        alt="Cursor pointer icon"
+                    />
                     <Link to="/checkers">Checkers</Link>
                 </li>
             </ul>

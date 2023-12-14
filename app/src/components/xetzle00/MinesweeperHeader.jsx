@@ -6,14 +6,24 @@ const MinesweeperHeader = ({ mineCnt, timer }) => {
     const { reset, setReset, face } = useContext(MinesweeperContext);
 
     const formatNumber = (num) => {
-        if (num < 10) {
-            return `00${num}`;
-        } else if (num < 100) {
-            return `0${num}`;
-        } else if (num > 999) {
-            return `${num % 999}`;
+        if (num >= 0) {
+            if (num < 10) {
+                return `00${num}`;
+            } else if (num < 100) {
+                return `0${num}`;
+            } else if (num > 999) {
+                return `${num % 999}`;
+            } else {
+                return `${num}`;
+            }
         } else {
-            return `${num}`;
+            if (num >= -9) {
+                return `-0${num * -1}`;
+            } else if (num > -99) {
+                return `-${num * -1}`;
+            } else {
+                return `ERR`;
+            }
         }
     };
 
