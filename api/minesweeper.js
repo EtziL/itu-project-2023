@@ -153,8 +153,16 @@ class Minesweeper {
     async updateBoard(x, y) {
         const board = await this.loadGame();
         await recursiveReveal(board, x, y, []);
+        let win = true;
+        board.forEach((row) => {
+            row.forEach((tile) => {
+                if ((!tile.revealed && !tile.isMine) || (tile.isMine && tile.revealed)) {
+                    win = false;
+                }
+            });
+        });
         await this.saveGame();
-        return board;
+        return { board, win };
     }
 
     async saveGame() {
