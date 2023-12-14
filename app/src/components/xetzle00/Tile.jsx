@@ -8,7 +8,7 @@ import explosion from "../../assets/minesweeper/explosion.mp3";
 
 const Tile = ({ tile }) => {
     const [icon, setIcon] = useState(null);
-    const { setClicked, setTimerRunning, setFace } = useContext(MinesweeperContext);
+    const { setClicked, setTimerRunning, face, setFace } = useContext(MinesweeperContext);
     const [playSound] = useSound(explosion);
 
     const style = {
@@ -28,6 +28,9 @@ const Tile = ({ tile }) => {
                     setFace("☠️");
                     console.log("BOOOOOOM");
                 } else {
+                    if (face === "☠️") {
+                        return;
+                    }
                     setFace("😮");
                     setClicked(tile);
                 }

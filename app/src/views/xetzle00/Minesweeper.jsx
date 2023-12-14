@@ -6,6 +6,7 @@ import { MinesweeperBoard, MinesweeperHeader, Tile } from "../../components/xetz
 import MinesweeperContext from "../../components/xetzle00/MinesweeperContext";
 
 // TODO: Flagging | MineCnt (max mines - flagged) | Win (Fireworks, Face, Modal?) | Custom settings
+// React Confetti Canvas
 
 const Minesweeper = () => {
     const { height, width, mines } = useParams();
@@ -47,7 +48,7 @@ const Minesweeper = () => {
     // -- Timer func + cleanup -- //
     useEffect(() => {
         console.log(`Timer running: ${timerRunning}`);
-        if (timerRunning) {
+        if (timerRunning && face !== "☠️") {
             const interval = setInterval(() => {
                 setTimer((timer) => timer + 1);
                 setFace("🙂");
