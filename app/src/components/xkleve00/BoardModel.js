@@ -1,7 +1,6 @@
 const BoardModel = {
   //initialize the game board
   initializeBoard: () => {
-    // Create an 8x8 board with null values
     const board = Array(8).fill(null).map(() => Array(8).fill(null));
 
     //fill board with default 
@@ -16,25 +15,20 @@ const BoardModel = {
 
       }
     }
-
     return board;
   },
+
   //check if the move is valid
   isValidMove: (board, fromRow, fromCol, toRow, toCol) => {
     const piece = board[fromRow][fromCol];
 
-    // Check if the 'to' position is within the board boundaries
     if (toRow < 0 || toRow >= 8 || toCol < 0 || toCol >= 8) {
       return false;
     }
-
-    // Check if the 'to' position is empty
     if (board[toRow][toCol] !== null) {
       return false;
     }
 
-    // Implement specific logic for valid moves based on the game's rules
-    // For now, let's assume a simple move for checkers (only forward and diagonally)
     const isForwardMove = piece.color === 'black' ? toRow < fromRow : toRow > fromRow;
     //console.log(`moved forward ${isForwardMove}`);
     const isDiagonal = Math.abs(toRow - fromRow) === 1 && Math.abs(toCol - fromCol) === 1;
@@ -42,7 +36,7 @@ const BoardModel = {
     //console.log(`moved rows ${Math.abs(toRow - fromRow)} moved cols ${Math.abs(toCol - fromCol)}`);
 
     if (piece.type === 'king' && isDiagonal) {
-      // King pieces can move in any direction diagonally
+      // King pieces can move in any direction
       return true;
     }
 
@@ -68,7 +62,6 @@ const BoardModel = {
     updatedBoard[fromRow][fromCol] = null;
     updatedBoard[toRow][toCol] = pieceToMove;
 
-    // Implement logic for capturing opponent's piece
     const middleRow = (fromRow + toRow) / 2;
     const middleCol = (fromCol + toCol) / 2;
 
@@ -78,24 +71,22 @@ const BoardModel = {
     if (Number.isInteger(middleCol) && Number.isInteger(middleRow)) {
       if (board[middleRow][middleCol]?.color !== pieceToMove.color) {
         updatedBoard[middleRow][middleCol] = null;
-        // Perform additional logic if capturing is needed (e.g., remove the captured piece)
       }
     }
 
-    // Implement logic for kinging a piece if it reaches the opponent's edge
     if (pieceToMove.color === 'black' && toRow === 0) {
       updatedBoard[toRow][toCol].type = 'king'; // Update the piece to a king
-      console.log(`got king black on ${toRow}-${toCol}`);
+      //console.log(`got king black on ${toRow}-${toCol}`);
     } else if (pieceToMove.color === 'white' && toRow === 7) {
       updatedBoard[toRow][toCol].type = 'king'; // Update the piece to a king
-      console.log(`got king white on ${toRow}-${toCol}`);
+      //console.log(`got king white on ${toRow}-${toCol}`);
     }
 
     return updatedBoard;
   },
 
+  // Count remaining pieces
   isWinConditionMet: (board, currentPlayer) => {
-    // Count remaining pieces for each player
     let blackPieces = 0;
     let whitePieces = 0;
 
@@ -112,7 +103,6 @@ const BoardModel = {
       }
     }
 
-    // Win condition: Opponent has no remaining pieces
     if (currentPlayer === 'black' && whitePieces === 0) {
       console.log("black win");
       return true;
@@ -122,6 +112,43 @@ const BoardModel = {
     }
 
     return false;
+  },
+
+  
+  calculateAvailableMoves: (board, selectedPiece) => {
+    const { row: selectedRow, col: selectedCol, color } = selectedPiece;
+    const availableMoves = [];
+
+    const checkMove = (row, col) => {
+      if (row >= 0 && row < 8 && col >= 0 && col < 8 && board[row][col] === null) {
+        availableMoves.push({ row, col });
+      }
+    };
+
+    const forwardDirection = color === 'black' ? -1 : 1;
+
+    // Forward movement
+    checkMove(selectedRow + forwardDirection, selectedCol - 1);
+    checkMove(selectedRow + forwardDirection, selectedCol + 1);
+
+    // Diagonal movements for capturing
+    const checkCapture = (middleRow, middleCol, targetRow, targetCol) => {
+      if (
+        middleRow >= 0 &&
+        middleRow < 8 &&
+        middleCol >= 0 &&
+        middleCol < 8 &&
+        board[middleRow][middleCol]?.color !== color &&
+        board[targetRow][targetCol] === null
+      ) {
+        availableMoves.push({ row: targetRow, col: targetCol });
+      }
+    };
+
+    //checkCapture(selectedRow + forwardDirection, selectedCol - 1, selectedRow + 2 * forwardDirection, selectedCol - 2);
+    //checkCapture(selectedRow + forwardDirection, selectedCol + 1, selectedRow + 2 * forwardDirection, selectedCol + 2);
+
+    return availableMoves;
   },
 };
 
