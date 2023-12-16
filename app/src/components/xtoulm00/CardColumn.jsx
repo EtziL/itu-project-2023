@@ -30,7 +30,7 @@ export const CardColumn = ({ accept = Suits.CLUBS, cards, onDrop }) => {
         return (
             <div ref={dropCol} className={'flex flex-col ' + (isActive ? 'bg-green-400 p-1' : 'bg-solitaireBg p-1')}>
                 {
-                    <div className='-mt-[120px] w-[105px] h-[150px]'>
+                    <div className='-mt-[125px] w-[105px] h-[150px]'>
                     </div>
                 }
             </div>
@@ -44,7 +44,7 @@ export const CardColumn = ({ accept = Suits.CLUBS, cards, onDrop }) => {
                     if (!card.revealed) {
                         return (
                             <div key={index} style={{ zIndex: index }}
-                                className='-mt-[120px]'>
+                                className='-mt-[125px]'>
                                 <Card 
                                     value={card.value}
                                     type={Suits.BACK}
@@ -56,7 +56,7 @@ export const CardColumn = ({ accept = Suits.CLUBS, cards, onDrop }) => {
                     else {
                         return (
                             <div key={index} style={{ zIndex: index }}
-                                className='-mt-[120px]'>
+                                className='-mt-[125px]'>
                                 <Card 
                                     value={card.value}
                                     type={card.type}

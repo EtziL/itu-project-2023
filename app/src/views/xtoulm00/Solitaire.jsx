@@ -5,7 +5,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { SuitHouse } from '../../components/xtoulm00/SuitHouse';
 import axios from 'axios';
 import { CardColumn } from '../../components/xtoulm00/CardColumn';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export const Solitaire = () => {
     const { difficulty = 'easy' } = useParams();
@@ -45,7 +45,7 @@ export const Solitaire = () => {
 
 
     useEffect(() => {
-        getState();
+        newGame();
     }, [])
 
     const newGame = async () => {
@@ -88,13 +88,18 @@ export const Solitaire = () => {
 
     return (
         <DndProvider backend={HTML5Backend}>
-            <div className='bg-solitaireBg'>
+            <div className='bg-solitaireBg h-screen'>
 
-                <div className='container mx-auto flex flex-col items-start w-screen h-screen'>
-                    <div className='p-5 font-bold flex justify-between items-center w-full'>
-                        <p className='text-white'>Score: {score}</p>
-                        <button className='bg-green-400 rounded p-3' onClick={() => newGame()}>New Game</button>
+                <div className='absolute font-bold flex justify-between items-center w-full py-2 px-10 mb-5 bg-slate-200 font-slab'>
+                    <p className='text-black text-2xl'>Score: {score}</p>
+                    <div className='flex gap-5'>
+                        <button className='transition bg-red-400 border-b-4 border-red-500 hover:bg-red-300 rounded p-3' onClick={() => newGame()}>New Game</button>
+                        <Link to='/'>
+                            <button className='transition bg-green-400 border-b-4 border-green-500 hover:bg-green-300 rounded p-3'>Main Menu</button>
+                        </Link>
                     </div>
+                </div>
+                <div className='container mx-auto flex flex-col items-start w-screen h-full pt-32'>
                     <div className='flex flex-row w-full justify-between basis-2/5'>
                         <div className='flex flex-row justify-between basis-1/3'>
                             <div className='cursor-pointer w-fit h-fit' onClick={(e) => handleDraw()}>
