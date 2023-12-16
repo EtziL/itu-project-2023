@@ -20,7 +20,7 @@ export const Solitaire = () => {
     const [waste, setWaste] = useState([])
     const [empty, setEmpty] = useState(false)
     const [score, setScore] = useState(0)
-    const [startTime, setStartTime] = useState(0)
+    const [startTime, setStartTime] = useState(Date.now())
     const [minutes, setMinutes] = useState(0)
     const [seconds, setSeconds] = useState(0)
     const navigate = useNavigate();
@@ -31,9 +31,6 @@ export const Solitaire = () => {
         setPiles(res.data.piles);
         setScore(res.data.score);
         setStartTime(res.data.startTime);
-        setMinutes(0);
-        setSeconds(0);
-        getTime();
         if (!res.data.deck.length) {
             setEmpty(true)
         } else {
@@ -53,9 +50,10 @@ export const Solitaire = () => {
     }
 
     useEffect(() => {
-        const interval = setInterval(() => getTime(), 1000);
         newGame();
-
+        const interval = setInterval(() => {
+            getTime();
+        }, 1000);
         return () => clearInterval(interval);
     }, [])
 
@@ -66,6 +64,8 @@ export const Solitaire = () => {
             })
             .then((res) => {
                 update(res);
+                setStartTime(Date.now());
+                getTime();
             });
     }
 

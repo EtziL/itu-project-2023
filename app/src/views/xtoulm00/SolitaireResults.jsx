@@ -13,7 +13,7 @@ export const SolitaireResults = () => {
             .then((res) => {
                 setScore(res.data.score);
                 setTime(res.data.finishTime - res.data.startTime);
-                const bonus = 2 * res.data.score - 10 * ((res.data.finishTime - res.data.startTime) / 1000);
+                const bonus = Math.round(2 * res.data.score - 10 * ((res.data.finishTime - res.data.startTime) / 1000));
                 if (bonus < 0) {
                     setTimeBonus(0);
                 } else {
