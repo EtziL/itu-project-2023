@@ -124,7 +124,8 @@ solitaireRouter.post('/drop-house', async (req, res) => {
                 housePiles: newHousePiles,
                 piles: newPiles,
                 score: state.score + 60,
-                won: true
+                won: true,
+                finishTime: Date.now()
             }
             await saveGame(newState);
             res.status(200).send(newState);
@@ -277,7 +278,8 @@ const initDeck = async (difficulty) => {
         piles: piles,
         housePiles: housePiles,
         waste: [],
-        score: 0
+        score: 0,
+        startTime: Date.now()
     };
 
     await saveGame(state);

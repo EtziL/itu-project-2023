@@ -11,7 +11,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { SuitHouse } from '../../components/xtoulm00/SuitHouse';
 import axios from 'axios';
 import { CardColumn } from '../../components/xtoulm00/CardColumn';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 export const Solitaire = () => {
     const { difficulty = 'easy' } = useParams();
@@ -20,25 +20,43 @@ export const Solitaire = () => {
     const [waste, setWaste] = useState([])
     const [empty, setEmpty] = useState(false)
     const [score, setScore] = useState(0)
+    const [startTime, setStartTime] = useState(0)
+    const [minutes, setMinutes] = useState(0)
+    const [seconds, setSeconds] = useState(0)
+    const navigate = useNavigate();
 
     const update = (res) => {
         setHouses(res.data.housePiles);
         setWaste(res.data.waste);
         setPiles(res.data.piles);
         setScore(res.data.score);
+        setStartTime(res.data.startTime);
+        setMinutes(0);
+        setSeconds(0);
+        getTime();
         if (!res.data.deck.length) {
             setEmpty(true)
         } else {
             setEmpty(false)
         }
         if (res.data.won) {
-            alert('You won!')
+            navigate('/solitaire/results');
         }
         return true;
     }
 
+    const getTime = () => {
+        const time = Date.now() - startTime;
+
+        setMinutes(Math.floor(time / 60000));
+        setSeconds(Math.floor((time / 1000) % 60));
+    }
+
     useEffect(() => {
+        const interval = setInterval(() => getTime(), 1000);
         newGame();
+
+        return () => clearInterval(interval);
     }, [])
 
     const newGame = async () => {
@@ -85,6 +103,7 @@ export const Solitaire = () => {
 
                 <div className='absolute font-bold flex justify-between items-center w-full py-2 px-10 mb-5 bg-slate-200 font-slab'>
                     <p className='text-black text-2xl'>Score: {score}</p>
+                    <p className='text-black text-2xl'>Time: {minutes}m {seconds}s</p>
                     <div className='flex gap-5'>
                         <button className='transition bg-red-400 border-b-4 border-red-500 hover:bg-red-300 rounded p-3' onClick={() => newGame()}>New Game</button>
                         <Link to='/'>
