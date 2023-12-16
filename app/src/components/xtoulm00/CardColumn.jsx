@@ -1,3 +1,9 @@
+/**
+ * Component for card columns in solitaire.
+*
+* Author: Toul Matěj (xtoulm00)
+*/
+
 import React from 'react';
 import { useDrop } from 'react-dnd';
 import { Card, Suits } from './Card';

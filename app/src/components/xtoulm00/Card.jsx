@@ -1,3 +1,9 @@
+/**
+ * Card component for solitaire.
+*
+* Author: Toul Matěj (xtoulm00)
+*/
+
 import React from 'react';
 import { memo } from 'react';
 import { useDrag } from 'react-dnd';

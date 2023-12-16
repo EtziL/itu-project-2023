@@ -1,3 +1,9 @@
+/**
+ * Main solitaire game view.
+*
+* Author: Toul Matěj (xtoulm00)
+*/
+
 import React, { useState, useEffect } from 'react';
 import { Card, Suits } from '../../components/xtoulm00/Card';
 import { DndProvider } from 'react-dnd';
@@ -14,7 +20,6 @@ export const Solitaire = () => {
     const [waste, setWaste] = useState([])
     const [empty, setEmpty] = useState(false)
     const [score, setScore] = useState(0)
-    const [won, setWon] = useState(false)
 
     const update = (res) => {
         setHouses(res.data.housePiles);
@@ -27,22 +32,10 @@ export const Solitaire = () => {
             setEmpty(false)
         }
         if (res.data.won) {
-            setWon(true);
             alert('You won!')
-        } else {
-            setWon(false);
         }
         return true;
     }
-
-    const getState = async () => {
-        axios
-            .get('http://localhost:3000/solitaire/load')
-            .then((res) => {
-                update(res);
-            });
-    }
-
 
     useEffect(() => {
         newGame();
