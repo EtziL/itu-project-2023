@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import GameBoard from './GameBoard';
 import BoardModel from './BoardModel';
+import { Link } from 'react-router-dom';
+import Confetti from '../xetzle00/Confetti';
+
 
 const GameController = () => {
   const initialBoard = BoardModel.initializeBoard();
@@ -10,15 +13,14 @@ const GameController = () => {
   const [winner, setWinner] = useState(null);
 
   const handleSquareClick = (row, col) => {
-    if(winner){
+    if (winner) {
       return;
     }
     if (selectedPiece) {
       const { piece, row: selectedRow, col: selectedCol } = selectedPiece;
-      if(selectedPiece.color === currentPlayer)
-      {
+      if (selectedPiece.color === currentPlayer) {
         setSelectedPiece({ piece: clickedPiece, row, col });
-        
+
         return;
       }
       const isValidMove = BoardModel.isValidMove(board, selectedRow, selectedCol, row, col);
@@ -31,7 +33,7 @@ const GameController = () => {
       }
 
       setSelectedPiece(null);
-    } 
+    }
     else {
       const clickedPiece = board[row][col];
       if (clickedPiece && clickedPiece.color === currentPlayer) {
@@ -50,14 +52,58 @@ const GameController = () => {
     setCurrentPlayer('black'); // Reset to starting player
   };
 
+  const circleStyle = {
+
+    width: '30px',
+    height: '30px',
+    borderRadius: '50%',
+    backgroundColor: currentPlayer === 'black' ? 'black' : 'white',
+    border: '2px solid black',
+  };
+
   return (
-    <div className="game-container">
-      <h1>Checkers Game</h1>
-      {winner && <div>Winner: {winner}</div>}
-      {!winner && <div>Current Player: {currentPlayer}</div>}
-      <GameBoard board={board} handleSquareClick={handleSquareClick} selectedPiece={selectedPiece}/>
-      {/* Other components like status display, reset button, etc. */}
-      <button onClick={handleReset}>Reset Game</button>
+    <div className="game-container h-screen flex">
+      <div className='flex-row flex items-center text-center'>
+        <GameBoard board={board} handleSquareClick={handleSquareClick} selectedPiece={selectedPiece} currentPlayer={currentPlayer} />
+      </div>
+
+      {winner && (
+        <div className="mb-4 ml-40 flex flex-col items-center mt-40">
+          <Confetti gameWin={winner}/> {/*imported file created by xetzle00*/}
+          <div className="flex flex-col items-center">
+            <h1 className="text-5xl mb-4 font-bold text-white">Offline checkers Game</h1>
+            <div className="text-3xl font-bold text-white">{winner === 'black' ? 'Black' : 'White'} player won!</div>
+            <button className="text-white font-bold py-2 px-4 rounded bg-amber-700 my-16" onClick={handleReset}>
+              New game
+            </button>
+            <Link to="/">
+
+              <button className="text-white font-bold py-2 px-4 rounded bg-amber-700">
+                Go to Main menu
+              </button>
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {!winner && (
+        <div className="mb-4 ml-40 flex flex-col items-center mt-40">
+          <div className="flex flex-col items-center">
+            <h1 className="text-5xl mb-4  font-bold text-white">Offline checkers Game</h1>
+            <div className="text-3xl text-white mb-4"> Current player</div>
+            <div style={circleStyle}></div>
+            <button className="text-white font-bold py-2 px-4 rounded bg-amber-700 my-16" onClick={handleReset}>
+              Reset game
+            </button>
+            <Link to="/">
+
+              <button className="text-white font-bold py-2 px-4 rounded bg-amber-700">
+                Go to Main menu
+              </button>
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
