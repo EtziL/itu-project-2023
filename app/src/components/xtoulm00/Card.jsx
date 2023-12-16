@@ -1,19 +1,20 @@
 import React from 'react';
 import { memo } from 'react';
 import { useDrag } from 'react-dnd';
+import { icon_clubs, icon_spades, icon_hearts, icon_diamonds, card_back } from "../../assets/solitaire";
 
 export const GetCardIcon = (type) => {
     switch (type) {
         case Suits.CLUBS:
-            return '/public/clubs.svg';
+            return icon_clubs;
         case Suits.SPADES:
-            return '/public/spades.svg';
+            return icon_spades;
         case Suits.HEARTS:
-            return '/public/hearts.svg';
+            return icon_hearts;
         case Suits.DIAMONDS:
-            return '/public/diamonds.svg';
+            return icon_diamonds;
         case Suits.BACK:
-            return '/public/card_back.svg';
+            return card_back;
     }
 };
 

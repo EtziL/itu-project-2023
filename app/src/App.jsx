@@ -5,13 +5,15 @@ import Minesweeper from "./views/xetzle00/Minesweeper";
 import MineMenu from "./views/xetzle00/MineMenu";
 import Home from "./views/xetzle00/Home";
 import Checkers from "./views/xkleve00/Checkers";
+import { SolitaireMenu } from "./views/xtoulm00/SolitaireMenu";
 
 function App() {
     return (
         <div>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/solitaire" element={<Solitaire />} />
+                <Route path="/solitaire" element={<SolitaireMenu />} />
+                <Route path="/solitaire/:difficulty" element={<Solitaire />} />
                 <Route path="/minesweeper" element={<MineMenu />} />
                 <Route path="/minesweeper/game/:height/:width/:mines" element={<Minesweeper />} />
                 <Route path="/checkers" element={<Checkers />} />
