@@ -24,10 +24,10 @@ export const SolitaireMenu = () => {
     return (
         <div className='flex flex-col w-screen h-screen items-center text-center text-white font-slab bg-solitaireBg'>
             <div className='basis-2/3 mt-32'>
-                <h1 className='text-8xl font-bold'>SOLITAIRE</h1>
+                <h1 className='select-none text-8xl font-bold'>SOLITAIRE</h1>
             </div>
             <div className='flex flex-col w-screen h-screen items-center text-center text-2xl'>
-                <h2 className='text-4xl font-bold mb-5'>Select a difficulty</h2>
+                <h2 className='text-4xl font-bold mb-5 select-none'>Select a difficulty</h2>
                 <Link to='/solitaire/easy'
                     onMouseEnter={() => handleButtonHover('easy')} onMouseLeave={() => handleButtonHover('')}
                     className='select-none cursor-pointer w-full hover:text-black hover:bg-gradient-to-r hover:from-transparent hover:via-green-500 hover:to-transparent py-3'>
