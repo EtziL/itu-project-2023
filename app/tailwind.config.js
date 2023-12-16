@@ -3,13 +3,15 @@ export default {
     theme: {
         extend: {
             colors: {
-                solitaireBg: "#0b421a",
+                solitaireBg: "#01431e",
+                solitaireLight: "#016d29",
                 minesweeperTileBg: "#dcdcdc",
                 minesweeperDigitalRed: "#FB0007",
             },
             fontFamily: {
                 digital: ["Digital-7", "sans-serif"],
                 silkScreen: ["Silkscreen", "sans-serif"],
+                slab: ["Roboto Slab"],
             },
             animation: {
                 flyUp: "flyUp 1s ease infinite",

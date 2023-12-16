@@ -10,10 +10,10 @@ export const SolitaireMenu = () => {
                 setHoverText('The shuffling is tweaked so that the game is almost always winnable.');
                 break;
             case 'medium':
-                setHoverText('A moderate challenge where aces are guaranteed to be in the initial deck to make the game a little easier.');
+                setHoverText('Quite a big challenge. Aces are guaranteed to be in the initial deck, but mistakes are still expensive.');
                 break;
             case 'hard':
-                setHoverText('The shuffling is completely random. With poor strategy, you can get stuck easily.');
+                setHoverText('Only for experts. The shuffling is completely random and with poor strategy, you can get stuck easily.');
                 break;
             default:
                 setHoverText('');
@@ -22,27 +22,28 @@ export const SolitaireMenu = () => {
     };
 
     return (
-        <div className='flex flex-col w-screen h-screen items-center text-center'>
-            <div className='my-[15%]'>
-                <h1 className='text-5xl font-bold'>SOLITAIRE</h1>
+        <div className='flex flex-col w-screen h-screen items-center text-center text-white font-slab bg-solitaireBg'>
+            <div className='basis-2/3 mt-32'>
+                <h1 className='text-8xl font-bold'>SOLITAIRE</h1>
             </div>
-            <div className='flex flex-col w-screen h-screen items-center text-center'>
+            <div className='flex flex-col w-screen h-screen items-center text-center text-2xl'>
+                <h2 className='text-4xl font-bold mb-5'>Select a difficulty</h2>
                 <Link to='/solitaire/easy'
                     onMouseEnter={() => handleButtonHover('easy')} onMouseLeave={() => handleButtonHover('')}
-                    className='select-none cursor-pointer transition-colors ease-in-out w-full hover:bg-gradient-to-r hover:from-transparent hover:via-green-300 hover:to-transparent py-3'>
+                    className='select-none cursor-pointer w-full hover:text-black hover:bg-gradient-to-r hover:from-transparent hover:via-green-500 hover:to-transparent py-3'>
                     Easy
                 </Link>
                 <Link to='/solitaire/medium'
                     onMouseEnter={() => handleButtonHover('medium')} onMouseLeave={() => handleButtonHover('')}
-                    className='select-none cursor-pointer transition w-full hover:bg-gradient-to-r hover:from-transparent hover:via-yellow-300 hover:to-transparent py-3'>
+                    className='select-none cursor-pointer w-full hover:text-black hover:bg-gradient-to-r hover:from-transparent hover:via-yellow-500 hover:to-transparent py-3'>
                     Medium
                 </Link>
                 <Link to='/solitaire/hard'
                     onMouseEnter={() => handleButtonHover('hard')} onMouseLeave={() => handleButtonHover('')}
-                    className='select-none cursor-pointer transition w-full hover:bg-gradient-to-r hover:from-transparent hover:via-red-300 hover:to-transparent py-3'>
+                    className='select-none cursor-pointer w-full hover:text-black hover:bg-gradient-to-r hover:from-transparent hover:via-red-500 hover:to-transparent py-3'>
                     Hard
                 </Link>
-                <p className='mt-10'>{hoverText}</p>
+                <p className='mt-10 w-2/3'>{hoverText}</p>
             </div >
         </div >
     );
