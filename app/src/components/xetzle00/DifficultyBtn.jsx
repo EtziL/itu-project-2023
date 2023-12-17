@@ -1,3 +1,8 @@
+/**
+ * Reusable button component for selecting difficulty
+ *
+ * Author: Etzler Lukáš (xetzle00)
+ */
 import React from "react";
 import { Link } from "react-router-dom";
 

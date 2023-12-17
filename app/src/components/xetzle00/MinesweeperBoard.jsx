@@ -1,3 +1,8 @@
+/**
+ * Main component of the game board. Generates the board from the board state
+ *
+ * Author: Etzler Lukáš (xetzle00)
+ */
 import Tile from "./Tile";
 import MinesweeperContext from "./MinesweeperContext";
 import { useContext } from "react";

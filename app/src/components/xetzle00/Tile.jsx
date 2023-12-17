@@ -1,3 +1,8 @@
+/**
+ * Component representing one tile of the minesweeper game
+ *
+ * Author: Etzler Lukáš (xetzle00)
+ */
 import { useContext } from "react";
 import "./InsetBorder.css";
 import { icon_flag, icon_bomb } from "../../assets/minesweeper";

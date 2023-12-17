@@ -1,3 +1,8 @@
+/**
+ * exports all assets for minesweeper
+ *
+ * Author: Etzler Lukáš (xetzle00)
+ */
 import icon_1 from "./Minesweeper_1.svg";
 import icon_2 from "./Minesweeper_2.svg";
 import icon_3 from "./Minesweeper_3.svg";

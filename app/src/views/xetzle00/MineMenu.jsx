@@ -1,3 +1,9 @@
+/**
+ * Menu for minesweeper
+ * Has 3 pre-set difficulties and option to create game with custom settings
+ *
+ * Author: Etzler Lukáš (xetzle00)
+ */
 import { useState, useEffect } from "react";
 import { icon_bomb } from "../../assets/minesweeper";
 import { DifficultyBtn } from "../../components/xetzle00";

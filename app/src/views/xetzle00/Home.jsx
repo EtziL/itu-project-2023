@@ -1,3 +1,8 @@
+/**
+ * Main menu - navigation to all games
+ *
+ * Author: Etzler Lukáš (xetzle00)
+ */
 import { Link } from "react-router-dom";
 import { cursor } from "../../assets/minesweeper";
 import { Particles } from "../../components/xetzle00/";

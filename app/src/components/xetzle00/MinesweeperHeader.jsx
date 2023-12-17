@@ -1,3 +1,8 @@
+/**
+ * Upper part of the game window. Contains mine counter, timer and dynamic face button
+ *
+ * Author: Etzler Lukáš (xetzle00)
+ */
 import { useContext } from "react";
 import "../../components/xetzle00/InsetBorder.css";
 import MinesweeperContext from "./MinesweeperContext";

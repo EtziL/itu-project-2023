@@ -1,3 +1,8 @@
+/**
+ * Index for all of my components (easier importing)
+ *
+ * Author: Etzler Lukáš (xetzle00)
+ */
 import DifficultyBtn from "./DifficultyBtn";
 import MinesweeperHeader from "./MinesweeperHeader";
 import MinesweeperBoard from "./MinesweeperBoard";
