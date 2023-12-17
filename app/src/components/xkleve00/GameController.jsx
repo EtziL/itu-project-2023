@@ -136,7 +136,7 @@ const GameController = () => {
               </div>
               <div className="flex items-center">
                 <div className="w-6 h-6 rounded-full mr-2 bg-white"></div>
-                <p className="text-2xl text-white">Timer left: {formatTime(timer.white)}</p>
+                <p className="text-2xl text-white">Time left: {formatTime(timer.white)}</p>
               </div>
             </div>
             <button className="text-white font-bold py-2 px-4 rounded bg-amber-700 my-16" onClick={handleReset}>
