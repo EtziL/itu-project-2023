@@ -14,3 +14,7 @@ Pro spuštění React front-endu je třeba ve složce *app* spustit příkaz
 [react-dnd](https://github.com/react-dnd/react-dnd/) - licence MIT
 
 [axios](https://github.com/axios/axios) - licence MIT
+
+[react-router-dom](https://github.com/remix-run/react-router) - licence MIT
+
+[react-canvas-confetti](https://github.com/ulitcos/react-canvas-confetti#readme) - licence MIT
