@@ -1,3 +1,8 @@
+/**
+ * Custom styles that couldn't be imported via Tailwind config file.
+ *
+ * Author: Etzler Lukáš (xetzle00)
+ */
 .border-inset{
     border-style:inset;
     border-top: 1px solid #FFFFFF;

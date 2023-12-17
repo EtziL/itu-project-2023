@@ -1,3 +1,9 @@
+/**
+ * Main component of the minesweeper game itself.
+ * Contains the components (game board, header, ..)
+ *
+ * Author: Etzler Lukáš (xetzle00)
+ */
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";

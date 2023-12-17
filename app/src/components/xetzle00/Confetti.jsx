@@ -1,3 +1,8 @@
+/**
+ * Component for generating confetti animation
+ *
+ * Author: Etzler Lukáš (xetzle00)
+ */
 import ReactCanvasConfetti from "react-canvas-confetti";
 import { useEffect, useRef } from "react";
 

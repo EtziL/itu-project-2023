@@ -1,3 +1,8 @@
+/**
+ * Particles comming up from the bottom of the screen
+ *
+ * Author: Etzler Lukáš (xetzle00)
+ */
 import React from "react";
 
 const Particles = () => {
