@@ -18,7 +18,7 @@ const GameController = () => {
   const [currentPlayer, setCurrentPlayer] = useState('black'); // Starting player
   const [winner, setWinner] = useState(null);
 
-  const [timer, setTimer] = useState({ black: 300, white: 300 }); // Timer in seconds for each player
+  const [timer, setTimer] = useState({ black: 180, white: 180 }); // Timer in seconds for each player
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -80,7 +80,7 @@ const GameController = () => {
     setBoard(BoardModel.initializeBoard());
     setWinner(null);
     setCurrentPlayer('black'); // Reset to starting player
-    setTimer({ black: 300, white: 300 });
+    setTimer({ black: 180, white: 180 });
   };
 
   const circleStyle = {

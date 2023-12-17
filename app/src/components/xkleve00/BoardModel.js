@@ -138,23 +138,6 @@ const BoardModel = {
     checkMove(selectedRow + forwardDirection, selectedCol - 1);
     checkMove(selectedRow + forwardDirection, selectedCol + 1);
 
-    // Diagonal movements for capturing
-    const checkCapture = (middleRow, middleCol, targetRow, targetCol) => {
-      if (
-        middleRow >= 0 &&
-        middleRow < 8 &&
-        middleCol >= 0 &&
-        middleCol < 8 &&
-        board[middleRow][middleCol]?.color !== color &&
-        board[targetRow][targetCol] === null
-      ) {
-        availableMoves.push({ row: targetRow, col: targetCol });
-      }
-    };
-
-    //checkCapture(selectedRow + forwardDirection, selectedCol - 1, selectedRow + 2 * forwardDirection, selectedCol - 2);
-    //checkCapture(selectedRow + forwardDirection, selectedCol + 1, selectedRow + 2 * forwardDirection, selectedCol + 2);
-
     return availableMoves;
   },
 };
