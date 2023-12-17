@@ -1,3 +1,10 @@
+/**
+* Board component that render board
+*
+* Author: Kleveta Jaromír (xkleve00)
+*/
+
+
 import React from 'react';
 import Square from './Square';
 import { useState } from 'react';

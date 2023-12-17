@@ -1,3 +1,10 @@
+/**
+* Square component that render each square on board
+*
+* Author: Kleveta Jaromír (xkleve00)
+*/
+
+
 import React from 'react';
 import Piece from './Piece';
 

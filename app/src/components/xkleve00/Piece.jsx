@@ -1,3 +1,10 @@
+/**
+* Piece component that render pieces on squares
+*
+* Author: Kleveta Jaromír (xkleve00)
+*/
+
+
 import React from 'react';
 import crownIcon from "../../assets/checkers/crown-icon.svg";
 

@@ -1,3 +1,10 @@
+/**
+* Board model that handle the game's logic
+*
+* Author: Kleveta Jaromír (xkleve00)
+*/
+
+
 const BoardModel = {
   //initialize the game board
   initializeBoard: () => {
