@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import "../../components/xetzle00/InsetBorder.css";
 import { MinesweeperBoard, MinesweeperHeader, Confetti } from "../../components/xetzle00";
@@ -72,6 +72,12 @@ const Minesweeper = () => {
         <>
             <div className="bg-slate-800 min-h-screen py-5 flex flex-col justify-center items-center">
                 <Confetti gameWin={gameWin} />
+                <Link to="/" className="absolute top-4 left-4 text-white text-2xl hover:text-gray-400 font-silkScreen">
+                    Main menu
+                </Link>
+                <Link to="/minesweeper" className="absolute top-12 left-4 text-white text-2xl hover:text-gray-400 font-silkScreen">
+                    Change difficulty
+                </Link>
                 <div className="w-max max-w-7xl bg-minesweeperTileBg p-4 border-8 border-inset">
                     <MinesweeperContext.Provider value={{ board, reset, setReset, setClicked, setTimerRunning, face, setFace, setMouseBtn }}>
                         <MinesweeperHeader mineCnt={mineCnt} timer={timer} />

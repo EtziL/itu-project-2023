@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { icon_bomb } from "../../assets/minesweeper";
 import { DifficultyBtn } from "../../components/xetzle00";
 import { AiOutlineClose } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const MineMenu = () => {
     const [menuVisible, setMenuVisible] = useState(false);
@@ -36,6 +37,9 @@ const MineMenu = () => {
 
     return (
         <div className="bg-slate-800 w-full min-h-screen flex items-center flex-col font-silkScreen">
+            <Link to="/" className="absolute top-4 left-4 text-white text-2xl hover:text-gray-400">
+                Main menu
+            </Link>
             <span className="flex justify-center items-center mb-20 mt-56">
                 <img src={icon_bomb} className="w-12 h-12" />
                 <h1 className="text-5xl text-white font-bold uppercase leading-tight">Minesweeper</h1>

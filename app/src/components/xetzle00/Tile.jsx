@@ -29,7 +29,6 @@ const Tile = ({ tile }) => {
                     setTimerRunning(false);
                     playSound();
                     setFace("☠️");
-                    console.log("BOOOOOOM");
                 } else {
                     if (face === "☠️") {
                         return;
